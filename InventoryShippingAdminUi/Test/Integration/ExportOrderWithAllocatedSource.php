@@ -16,6 +16,7 @@ use Magento\Sales\Api\Data\ShipmentItemCreationInterface;
 use Magento\InventoryShipping\Model\ResourceModel\ShipmentSource\SaveShipmentSource;
 use Magento\InventoryShippingAdminUi\Model\ResourceModel\GetAllocatedSourcesForOrder;
 use Magento\Sales\Controller\Adminhtml\Order\ExportBase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -83,10 +84,10 @@ class ExportOrderWithAllocatedSource extends ExportBase
      *
      * @magentoDbIsolation disabled
      *
-     * @dataProvider exportOrderDataProvider
      * @param string $format
      * @return void
      */
+    #[DataProvider('exportOrderDataProvider')]
     public function testExportAllocatedSourceValue(string $format): void
     {
         $searchCriteria = $this->searchCriteriaBuilder
